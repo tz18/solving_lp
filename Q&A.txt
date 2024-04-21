@@ -1,0 +1,54 @@
+Q: Does a line break or page break indicate the end of the preceding word?
+A: No.
+
+Q: Are all runes used at least once?
+A: Yes
+
+Q: How many of the solved words / clauses have prime gematria sums? Before and after solving? Did solving increase primality?
+A:
+
+Q: Are the solutions of the last pages mirrors of the solutions of the first (solved) pages?
+A: Not in any obvious way.
+
+Q: If plaintext F is (consistently) a SKIP, then 
+* any ciphertext F is either a plaintext F or the enciphering of another letter
+* after deciphering, any plaintext F that was not a ciphertext F is an error
+Does this suggest any system for deciphering?
+A: e.g. for vignere, we can rule out one letter in each position per period if the letters are different each period, if we are certain of the location of the skips.
+
+Q: Would a skip necessarily be preserved from plaintext to ciphertext? I.e. if there were multiple stages of ciphering.
+A: Something could be a skip for one stage and not for another I guess. Though I think you have to think about it from the perspective of deciphering by the intended recipient (the person who knows the key), which should be quick and easy. You have to be able to know when you should skip without knowing what the plaintext was.
+
+Q: Is the use of skips in Koan 2 compatible the idea that it should be easy to decipher without knowing the plaintext?
+A: Yes, knowing the key, it's pretty straightforward to just decipher until you start getting gibberish, after which you go back to the last F, mark it as a plaintext F, and skip it. 
+Kind of weird to have that kind of backtracking in the decipher though. Assuming the intended recipient knows only which plaintext letter is the skip letter, and not which specifix indexes in the CT.
+
+Q: Is having F be a skip compatible with ciphertext autokey?
+A: F is the first rune in the order provided by gematria primus, and therefore has an index of 0. If F was a skip for the ciphertext autokey step, then enciphering an index with value F (P_i = F) would result in a ciphertext F (C_i = F), and then there would be three options for handling it with regards to enciphering the next index:
+option 1: fully skip the F and do not use it as input to enciphering the next index, instead use the ciphertext index before the preserved F to encode the next index. this has the advantage of not producing a doublet. this is similar to how skips were used in the vigenere for the second solved section.
+option 2: do not skip the F, use it as input to enciphering the next index, which means that the next index is not enciphered
+
+Q: What about an interruptor? How would that play with ciphertext autokey?
+A: If a letter was an interruptor, then we could imagine it would act similarly to a skip, except that the keystream sequence would restart after rather than use the letter that came before. Or it could restart including the interruptor, so the interruptor would always be enciphered with the first letter of the keystream.
+
+Q: There is a pattern that even sections are unencrypted. Why is this broken with section 16 (page 54-55)? (And section 8, for that matter.)
+0 atbash
+1 vignere ("DIVINITY") with skips
+2 unencrypted
+3 atbash + 3
+4 unencrypted
+5 vignere ("FIRFUNFERENFE") with skips
+6 unencrypted
+7  ...
+16 ...
+17 subtract totient sequence
+18 unencrypted
+A: to make our lives harder.
+
+Plan. 
+
+Q: Why "FIRFUNFERENFE"? How do you get to FIRFUNFERENFE from CIRCUMFERENCE?
+A: Well, obviously you change every C to an F.
+
+Q: can deciphering operations be generalized as applications of keystream to ciphertext with optional parameters, such that skipping could be generic
+A:
